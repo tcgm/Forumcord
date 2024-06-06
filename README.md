@@ -139,4 +139,4 @@ Forumcord is a WPF-based desktop application built with .NET 8, designed to prov
 
 ## License
 
-This project is licensed under the GNU v3.0 License. See the [LICENSE](LICENSE.txt) file for details.
+This project is licensed under the GNU v3.0 License. See the LICENSE file for details.
