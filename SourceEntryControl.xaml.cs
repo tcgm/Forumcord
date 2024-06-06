@@ -27,12 +27,16 @@ namespace Forumcord
 
         public Source source; 
 
-        public SourceEntryControl(Source newSource)
+        public SourceEntryControl(Source newSource, bool created)
         {
             SetSource(newSource);
             InitializeComponent();
             DataContext = this; // Set UserControl's DataContext to itself
-
+            
+            if(created)
+            {
+                OpenEditWindow();
+            }
         }
 
         public static readonly DependencyProperty NameProp =
@@ -81,8 +85,28 @@ namespace Forumcord
 
         private void EditItem_Click(object sender, RoutedEventArgs e)
         {
-            EditSourceWindow editWindow = new EditSourceWindow(this);
+            OpenEditWindow();
+        }
+
+        public void OpenEditWindow()
+        {
+            EditSourceWindow editWindow = new EditSourceWindow(this, EditWindowCallback);
             editWindow.ShowDialog();
+        }
+
+        private void EditWindowCallback(List<string> list)
+        {
+            if (list.Count > 0)
+            {
+                SetSourceValues(list[0],
+                    list[1],
+                    list[2]);
+
+                MainWindow.Instance.SaveSources();
+            } else
+            {
+                //Do nothing, the edit operation was canceled.
+            }
         }
 
         public void SetSourceValues(string newName,
@@ -113,6 +137,11 @@ namespace Forumcord
         }
 
         private void UserControl_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            OpenContextMenu();
+        }
+
+        public void OpenContextMenu()
         {
             ContextMenu contextMenu = new ContextMenu();
 

@@ -20,21 +20,40 @@ namespace Forumcord
     public partial class EditSourceWindow : Window
     {
         private SourceEntryControl sourceEntry;
+        public Action<List<string>> windowCallback;
 
-        public EditSourceWindow(SourceEntryControl sourceControl)
+        public EditSourceWindow(SourceEntryControl sourceControl,
+            Action<List<string>> windowCallback)
         {
             InitializeComponent();
             sourceEntry = sourceControl;
+            Source source = sourceControl.source;
 
-            NameTextBox.Text = sourceControl.ForumName;
-            UrlTextBox.Text = sourceControl.Url;
-            IconPathTextBox.Text = sourceControl.ForumImagePath;
+            NameTextBox.Text = source.Name;
+            UrlTextBox.Text = source.Url;
+            IconPathTextBox.Text = source.IconPath;
+            IconPathTextBox.CaretIndex = IconPathTextBox.Text.Length > 0 ? IconPathTextBox.Text.Length-1 : 0;
+            this.windowCallback = windowCallback;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            sourceEntry.SetSourceValues(NameTextBox.Text, UrlTextBox.Text, IconPathTextBox.Text);
-            MainWindow.Instance.SaveSources();
+            List<string> results = new List<string>();
+            results.Add(NameTextBox.Text);
+            results.Add(UrlTextBox.Text);
+            results.Add(IconPathTextBox.Text);
+
+            windowCallback?.Invoke(results);
+
+            this.Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> results = new List<string>();
+
+            windowCallback?.Invoke(results);
+
             this.Close();
         }
     }
