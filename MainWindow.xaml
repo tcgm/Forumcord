@@ -48,7 +48,7 @@
         </Grid>
         <Grid x:Name="OverlayGrid" Width="1601">
             <Button x:Name="ShowAlertsButton" Content="Show Alerts" Click="ShowAlertsButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <Grid x:Name="SidebarGrid" Visibility="Visible" HorizontalAlignment="Right" Width="384" Panel.ZIndex="1" Background="#FF001831" Margin="0,34,0,0">
+            <Grid x:Name="SidebarGrid" Visibility="Hidden" HorizontalAlignment="Right" Width="384" Panel.ZIndex="1" Background="#FF001831" Margin="0,34,0,0">
                 <Rectangle Width="8" HorizontalAlignment="Left" Margin="-8,0,0,0" >
                     <Rectangle.Fill>
                         <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">

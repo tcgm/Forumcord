@@ -10,9 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="forum.png" />
     <None Remove="ForumcordWeb\forumcordLogo.png" />
     <None Remove="ForumcordWeb\index.html" />
+    <None Remove="ForumcordWeb\licenses.html" />
     <None Remove="pgaqno2a.0zj~" />
   </ItemGroup>
 
@@ -20,14 +20,12 @@
     <EmbeddedResource Include="ForumcordWeb\forumcordLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="ForumcordWeb\licenses.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="ForumcordWeb\index.html">
       <Generator>MSBuild:Compile</Generator>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="forum.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

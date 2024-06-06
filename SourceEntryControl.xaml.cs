@@ -102,7 +102,7 @@ namespace Forumcord
             if (string.IsNullOrEmpty(iconPath) || !File.Exists(iconPath))
             {
                 // Set a temporary default image while we fetch the actual favicon
-                ForumImage = new BitmapImage(new Uri("/forum.png", UriKind.RelativeOrAbsolute));
+                ForumImage = new BitmapImage(new Uri(Values.DefaultSourceIcon, UriKind.RelativeOrAbsolute));
                 // Start the async process to download and set the favicon
                 DownloadAndSetFaviconAsync(source.Url, source.Name, source);
             }
@@ -158,7 +158,7 @@ namespace Forumcord
                     catch (Exception)
                     {
                         // Handle errors (e.g., favicon not found)
-                        return "/forum.png"; // Default icon path
+                        return Values.DefaultSourceIcon; // Default icon path
                     }
                 }
             }

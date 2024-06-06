@@ -7,7 +7,7 @@
              d:DesignHeight="64" d:DesignWidth="64" MouseRightButtonUp="UserControl_MouseRightButtonUp" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
     <Grid>
         <!-- Define the appearance of the Source entry -->
-        <Image Width="64" Height="64" Source="/forum.png"/>
+        <Image Width="64" Height="64" Source="/images/forumwhite.png"/>
         <Image Source="{Binding ForumImage}" Width="64" Height="64"/>
         <TextBlock Text="{Binding ForumName}" VerticalAlignment="Bottom" Width="64" Foreground="White" Height="16"/>
     </Grid>

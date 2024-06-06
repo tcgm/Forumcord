@@ -335,7 +335,7 @@ namespace Forumcord
         {
 
             // Get the default icon path from resources
-            var defaultIconPath = "/forum.png"; // Adjust the path as needed
+            var defaultIconPath = Values.DefaultSourceIcon; // Adjust the path as needed
 
             // Load the default icon image
             //var defaultIcon = LoadEmbeddedImage(defaultIconPath);
@@ -465,8 +465,14 @@ namespace Forumcord
 
         private void ShowAlertsButton_Click(object sender, RoutedEventArgs e)
         {
-            SidebarGrid.Visibility = Visibility.Visible;
-            AlertsContentControl.UpdateAlerts(alerts);
+            if (SidebarGrid.Visibility == Visibility.Visible)
+            {
+                SidebarGrid.Visibility = Visibility.Hidden;
+            } else
+            {
+                SidebarGrid.Visibility = Visibility.Visible;
+                AlertsContentControl.UpdateAlerts(alerts);
+            }
         }
     }
 }
